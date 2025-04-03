@@ -4,17 +4,14 @@ import string
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-# Definição dos dados
 placas = ['RVT-694', 'RVT-695', 'RVT-696', 'RVT-697', 'RVT-698', 'RVT-699', 'RVT-700', 'RVT-701']
 cliente = ['cemig' for _ in range(len(placas))]
 id = [''.join(random.choices(string.digits, k=15)) for _ in range(len(placas))]
 km = [random.randint(0, 700) for _ in range(len(placas))]
 time = [('minutos:', random.randint(0, 1440)) for _ in range(len(placas))]
 
-# DataFrame
 df = pd.DataFrame({'Placas': placas, 'Time': time, 'Cliente': cliente, 'KM': km, 'ID': id})
 
-# Classe principal
 class Comandos1:
     def __init__(self, placas, time):
         self.placas = placas
@@ -40,7 +37,6 @@ class Gera_Placa(Comandos1):
         global df
         df = pd.concat([df, pd.DataFrame(novo_registro)], ignore_index=True)
 
-# Criando interface Tkinter
 class App:
     def __init__(self, root):
         self.root = root
